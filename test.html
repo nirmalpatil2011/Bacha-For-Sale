@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Premium Gold–Cream Background Test</title>
+
+<style>
+  /* Reset */
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+
+  /* Page container so demo heading sits above background */
+  body{
+    font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    min-height:100vh;
+    position:relative;
+    background: #fffdf8;
+    overflow-x:hidden;
+  }
+
+  /* -------------------------
+     PREMIUM BACKGROUND
+     - z-index: 0 so it's behind content (which will use z-index: 2)
+     - uses a few visible elements (glows + circles + thin gold stripes)
+     - ultra lightweight: only CSS
+     ------------------------- */
+  .premium-bg{
+    position:fixed;
+    inset:0;
+    z-index:0;                /* keep it behind page content */
+    pointer-events:none;
+    background:
+      /* soft corner glows */
+      radial-gradient(circle at 12% 18%, rgba(255,190,60,0.34), transparent 35%),
+      radial-gradient(circle at 86% 28%, rgba(255,150,40,0.28), transparent 40%),
+      radial-gradient(circle at 48% 82%, rgba(255,210,120,0.22), transparent 45%),
+      /* base cream */
+      linear-gradient(135deg,#fff9ee,#fff5dc 60%);
+    background-attachment: fixed;
+    background-size: cover;
+  }
+
+  /* extra visible decorative shapes placed inside .premium-bg */
+  .premium-bg .shape{
+    position:absolute;
+    border-radius:50%;
+    transform: translateZ(0);
+    pointer-events:none;
+    filter: blur(4px);
+    opacity:0.75;
+  }
+
+  /* three example shapes that will definitely show */
+  .shape.s1{
+    width:220px;height:220px;
+    left:6%; top:12%;
+    background: radial-gradient(circle, rgba(255,230,170,0.9), rgba(255,200,80,0.25) 50%, transparent 70%);
+  }
+  .shape.s2{
+    width:160px;height:160px;
+    right:8%; top:22%;
+    background: radial-gradient(circle, rgba(255,240,215,0.9), rgba(255,170,60,0.18) 45%, transparent 70%);
+    filter: blur(6px);
+  }
+  .shape.s3{
+    width:280px;height:280px;
+    left:50%; bottom:6%;
+    transform: translateX(-30%);
+    background: radial-gradient(circle, rgba(255,245,220,0.9), rgba(255,210,120,0.15) 50%, transparent 70%);
+    filter: blur(5px);
+  }
+
+  /* subtle gold diagonal stripe texture - thin and low-contrast */
+  .premium-bg::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:
+      repeating-linear-gradient(
+        45deg,
+        rgba(255,190,60,0.06) 0 3px,
+        transparent 3px 18px
+      );
+    opacity:0.45;
+    pointer-events:none;
+  }
+
+  /* -------------------------
+     CONTENT (above background)
+     ------------------------- */
+  .page-wrap{
+    position:relative;
+    z-index:2;             /* put content above the background */
+    min-height:100vh;
+    display:flex;
+    align-items:flex-start;
+    justify-content:center;
+    padding:56px 24px;
+  }
+
+  .main-heading{
+    margin-top:28px;
+    text-align:center;
+    font-size:clamp(28px,5vw,44px);
+    font-weight:800;
+    letter-spacing:4px;
+    line-height:1.05;
+    width:100%;
+    max-width:1100px;
+    padding:28px 20px;
+    border-radius:12px;
+    background: linear-gradient(90deg, rgba(255,255,255,0.12), rgba(255,255,255,0.03));
+    box-shadow: 0 6px 30px rgba(15,15,15,0.06);
+    color: #4a2f00;
+    /* golden text gradient */
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-image: linear-gradient(90deg, #ffb84d, #ff7d1a);
+  }
+
+  /* small demo subtext so you can see contrast */
+  .sub {
+    margin-top:14px;
+    text-align:center;
+    color:#6b4b1a;
+    opacity:0.9;
+    font-weight:600;
+    font-size:16px;
+  }
+
+  /* Demo box to show how product area will look */
+  .demo-box{
+    margin-top:28px;
+    width:100%;
+    max-width:1000px;
+    padding:24px;
+    border-radius:12px;
+    background: rgba(255,255,255,0.6);
+    border: 1px solid rgba(255,200,80,0.12);
+    box-shadow: 0 6px 30px rgba(30,30,30,0.05);
+  }
+
+  /* responsive spacing */
+  @media (max-width:640px){
+    .page-wrap{padding:30px 16px}
+    .main-heading{font-size:clamp(22px,8vw,34px); padding:18px}
+    .shape.s1{display:none}
+  }
+
+</style>
+</head>
+<body>
+
+  <!-- background: glows + shapes + thin texture -->
+  <div class="premium-bg" aria-hidden="true">
+    <!-- guaranteed-visible shapes (pure CSS) -->
+    <div class="shape s1"></div>
+    <div class="shape s2"></div>
+    <div class="shape s3"></div>
+  </div>
+
+  <!-- content on top -->
+  <div class="page-wrap">
+    <div>
+      <h1 class="main-heading">OUR PRODUCTS</h1>
+      <p class="sub">Premium • Lightweight • Elegant background — replace this heading in your real page</p>
+
+      <div class="demo-box">
+        <p style="color:#4a2f00; font-weight:700">Demo product area (not included in final file) — this box shows how your products will sit above the background.</p>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
