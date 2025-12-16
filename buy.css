@@ -74,7 +74,7 @@ a{
 
 
 /* ===== PRELOADER ===== */
-/*
+
 #preloader{
   position:fixed;
   top:0;left:0;width:100%;height:100%;
@@ -121,9 +121,6 @@ a{
     opacity: 1;
   }
 }
-
-*/
-
 
 /* ------------------- Background Effects ------------------- */
 body {
@@ -336,4 +333,5 @@ label {
 }
 .orderid optgroup {
   color: green;
+
 }
