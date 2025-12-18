@@ -129,6 +129,17 @@ hr {
   }
 }
 
+#preloader h1{
+  color:#ffd700;
+  font-size:55px;
+  letter-spacing:2px;
+  text-shadow:0 0 8px #ffd700;
+  margin-bottom: 30px;
+  background-color: none;
+  margin-left: 1%;
+  top: 200px;
+}
+
 nav{
 
   margin-left: 800px;
